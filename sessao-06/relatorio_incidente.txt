@@ -1,0 +1,17 @@
+===== RELATÓRIO DE INCIDENTE - CVTECH Lda. =====
+Data: Sun Oct 18 16:35:18 -01 2026
+--- CRONOLOGIA ---
+2026-10-18 16:06:18 INFO monitor iniciado
+2026-10-18 16:06:18 ERRO cvtech-sync não responde — CPU acima de 95%
+2026-10-18 16:18:59 INFO CPU normalizada — cvtech-sync.sh terminado
+Avisos registados: 409
+--- PROCESSOS cvtech AINDA ATIVOS ---
+ericali+     961  0.1  0.0   5080  3804 pts/0    S    16:06   0:03 /bin/bash /home/ericalinux/incidente/cvtech-monitor.sh
+--- TOP 5 DE CPU APÓS A INTERVENÇÃO ---
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.4  0.4  24424 15436 ?        Ss   15:54   0:10 /sbin/init
+root          62  0.2  0.6  58836 25332 ?        S<s  15:54   0:06 /usr/lib/systemd/systemd-journald
+ericali+     961  0.1  0.0   5080  3804 pts/0    S    16:06   0:03 /bin/bash /home/ericalinux/incidente/cvtech-monitor.sh
+root         113  0.1  0.3  34668 11796 ?        Ss   15:54   0:03 /usr/lib/systemd/systemd-udevd
+root        3973  0.0  0.4 1792300 15440 ?       Ssl  16:25   0:00 /usr/libexec/wsl-pro-service
+Conclusões: a causa da lentidão foi o processo cvtech-sync.sh, preso num ciclo infinito e a usar cerca de 98% de CPU. Terminei-o com SIGTERM e, como o cvtech-relatorio.sh ignorava esse sinal, recorri ao SIGKILL só depois de o SIGTERM falhar. Recomendo rever o código do script de sincronização, definir limites de tempo de execução e configurar alertas de CPU para detetar o problema mais cedo.
