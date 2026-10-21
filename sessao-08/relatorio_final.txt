@@ -1,0 +1,33 @@
+== Missão 1 ==
+C1-09E8BA
+Comando: find ~/desafio_final/arquivo -type f -name ".*"
+== Missão 2 ==
+C2-B53519
+Comando da chave: grep CRITICO ~/desafio_final/logs/servidor.log
+Total de linhas: 301
+Comando: wc -l ~/desafio_final/logs/servidor.log
+Linhas de ERRO: 42
+Comando: grep ERRO ~/desafio_final/logs/servidor.log | wc -l
+== Missão 3 ==
+C3-9010D9
+Comando: chmod 640 ~/desafio_final/docs/relatorio_rh.txt
+== Missão 4 ==
+Comando: sudo groupadd auditores
+Comando: sudo useradd -m -s /bin/bash -G auditores auditor
+Resultado de id auditor:
+uid=1004(auditor) gid=1008(auditor) groups=1008(auditor),1007(auditores)
+== Missão 5 ==
+Processo: indexador.sh
+PID: 2259
+CPU: 99.9%
+Comando: ps aux --sort=-%cpu | head -n 6
+Comando para terminar: kill 2259 (SIGTERM)
+C5-AAF456
+== Missão 6 ==
+C6-8FB2D2
+Comando: openssl enc -d -aes-256-cbc -pbkdf2 -in cofre/cofre.tar.gz.enc -out cofre/cofre.tar.gz
+Comando: tar -tzf cofre/cofre.tar.gz
+Comando: tar -xzf cofre/cofre.tar.gz -C cofre/restaurado
+Password: password obtida na Missão 3
+== Pistas usadas ==
+Usei pistas de Nível 2 (comando com lacunas) nas Missões 1 a 6.
